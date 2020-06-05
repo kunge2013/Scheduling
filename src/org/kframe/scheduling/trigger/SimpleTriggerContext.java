@@ -34,9 +34,9 @@ public class SimpleTriggerContext implements TriggerContext {
 	}
 
 	public void update(Date scheduledExecutionTime, Date actualExecutionTime, Date completionTime) {
-		this.lastScheduledExecutionTime = lastScheduledExecutionTime;
-		this.lastActualExecutionTime = lastActualExecutionTime;
-		this.lastCompletionTime = lastCompletionTime;
+		this.lastScheduledExecutionTime = scheduledExecutionTime;
+		this.lastActualExecutionTime = actualExecutionTime;
+		this.lastCompletionTime = completionTime;
 	}
 
 }
