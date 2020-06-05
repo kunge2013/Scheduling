@@ -40,8 +40,19 @@ public class ScheduledTaskRegistrarProcessorTest {
 //		}
 //		
 //		
-//		@Scheduled(cron = "*/5 * * * * *")
-//		public void doTask2() {
+		@Scheduled(cron = "*/30 * * * * *")
+		public void doTask2() {
+			long now = System.currentTimeMillis();
+			Logger.getGlobal().setLevel(Level.INFO);
+			Logger.getGlobal().info("22222222");
+			Logger logger = Logger.getLogger("JUL");
+			logger.setLevel(Level.INFO);
+			logger.info("doTask2 ....." + (prefix2 - (now)) / 1000);
+			prefix2 = now;
+		}
+		
+//		@Scheduled(cron = "0 58 11 ? * *")
+//		public void time() {
 //			long now = System.currentTimeMillis();
 //			Logger.getGlobal().setLevel(Level.INFO);
 //			Logger.getGlobal().info("测试日志输出222222");
@@ -50,16 +61,5 @@ public class ScheduledTaskRegistrarProcessorTest {
 //			logger.info("doTask2 ....." + (prefix2 - (now)) / 1000);
 //			prefix2 = now;
 //		}
-		
-		@Scheduled(cron = "0 58 11 ? * *")
-		public void time() {
-			long now = System.currentTimeMillis();
-			Logger.getGlobal().setLevel(Level.INFO);
-			Logger.getGlobal().info("测试日志输出222222");
-			Logger logger = Logger.getLogger("JUL");
-			logger.setLevel(Level.INFO);
-			logger.info("doTask2 ....." + (prefix2 - (now)) / 1000);
-			prefix2 = now;
-		}
 	}
 }
