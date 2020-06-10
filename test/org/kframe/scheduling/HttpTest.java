@@ -19,7 +19,6 @@ import com.sun.net.httpserver.spi.HttpServerProvider;
 
 public class HttpTest {
 	public static void main(String[] args) throws IOException, InterruptedException {
-		CountDownLatch cl = new CountDownLatch(1);
 		HttpServerProvider provider = HttpServerProvider.provider();
 		
 		HttpServer server = provider.createHttpServer(new InetSocketAddress("127.0.0.1", 90), 1024);
