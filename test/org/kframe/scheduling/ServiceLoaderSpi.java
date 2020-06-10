@@ -8,7 +8,7 @@ public class ServiceLoaderSpi {
 		ServiceLoader<IService> loader = ServiceLoader.load(IService.class);
 		Iterator<IService> it = loader.iterator();
 		while(it.hasNext()) {
-			IService s = 	it.next();
+			IService s = it.next();
 			System.out.println(s.getClass().getName());
 		}
 	}
