@@ -7,9 +7,9 @@ import java.lang.ref.WeakReference;
 
 public class TRefrence {
 	public static void main(String[] args) throws InterruptedException {
-		byte[] datavel1 = new byte[4028];
-		byte[] datavel2 = new byte[4028];
-		byte[] datavel3 = new byte[4028];
+		byte[] datavel1 = new byte[402800000];
+		byte[] datavel2 = new byte[40280000];
+		byte[] datavel3 = new byte[4028000];
 		Data d = new Data(datavel1);
 		SoftData sd = new SoftData(datavel2);
 		PhantomReferenceData pd = new PhantomReferenceData(datavel3, new ReferenceQueue<byte[]>());
