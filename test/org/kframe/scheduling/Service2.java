@@ -1,7 +1,6 @@
 package org.kframe.scheduling;
 
-public class Service implements IService {
-	
+public class Service2 implements IService {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
@@ -10,6 +9,6 @@ public class Service implements IService {
 
 	@Override
 	public void hello() {
-		System.out.println("Service hello");
+		System.out.println("hello");
 	}
 }

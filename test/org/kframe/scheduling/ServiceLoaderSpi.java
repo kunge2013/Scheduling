@@ -9,6 +9,7 @@ public class ServiceLoaderSpi {
 		Iterator<IService> it = loader.iterator();
 		while(it.hasNext()) {
 			IService s = it.next();
+			s.hello();
 			System.out.println(s.getClass().getName());
 		}
 	}
