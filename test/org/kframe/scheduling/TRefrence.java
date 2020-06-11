@@ -4,28 +4,62 @@ import java.lang.ref.PhantomReference;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TRefrence {
-	public static void main(String[] args) throws InterruptedException {
-		byte[] datavel1 = new byte[402800000];
-		byte[] datavel2 = new byte[40280000];
-		byte[] datavel3 = new byte[4028000];
-		Data d = new Data(datavel1);
-		SoftData sd = new SoftData(datavel2);
-		PhantomReferenceData pd = new PhantomReferenceData(datavel3, new ReferenceQueue<byte[]>());
-		
-		datavel1 = null;
-		datavel2 = null;
-		datavel3 = null;
-		
-		byte[] b = new byte[1024 * 10000];
-		System.out.println(b);
-		System.out.println("weak =====" + d.get() +", soft==== " + sd +", PhantomReferenceData === " + pd);
-		System.gc();
-		System.out.println("weak =====" + d.get() +", soft==== " + sd +", PhantomReferenceData === " + pd);
-		
+
+	byte[] d = new byte[1024 * 1024 * 100];
+	
+	public static void main(String[] args) {
+		Car car = new Car(22000,"silver");
+		WeakReference<Car> weakCar = new WeakReference<Car>(car);
+		SoftReference<List<SoftReference<TRefrence>>> list = new SoftReference<List<SoftReference<TRefrence>>>(new ArrayList<SoftReference<TRefrence>>());
+		int i=0;
+		while(true) {
+			list.get().add(new SoftReference<TRefrence>(new TRefrence()));
+			System.gc();
+			if(weakCar.get()!=null) {
+				i++;
+				System.out.println("Object is alive for "+i+" loops - "+weakCar);
+			}else{
+				System.out.println("Object has been collected.");
+				break;
+			}
+		}
 	}
 	
+	public static class Car {
+		private double price;
+		private String colour;
+		
+		public Car(double price, String colour){
+			this.price = price;
+			this.colour = colour;
+		}
+		
+		public double getPrice() {
+			return price;
+		}
+		public void setPrice(double price) {
+			this.price = price;
+		}
+		public String getColour() {
+			return colour;
+		}
+		public void setColour(String colour) {
+			this.colour = colour;
+		}
+		
+		public String toString(){
+			return colour +"car costs $"+price;
+		}
+
+	}
+	
+	public void test() {
+		byte[] b = new byte [100 * 1024 *1024];
+	}
 	static class Data extends WeakReference<byte[]> {
 	
 		public Data(byte[] referent) {
